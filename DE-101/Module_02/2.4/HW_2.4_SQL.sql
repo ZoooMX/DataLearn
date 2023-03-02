@@ -1,9 +1,4 @@
---DROP TABLE	IF EXISTS order_dim;
---DROP TABLE	IF EXISTS costumer_dim;
---DROP TABLE	IF EXISTS geo_dim;
---DROP TABLE	IF EXISTS product_dim;
---DROP TABLE	IF EXISTS ship_dim;
---DROP TABLE	IF EXISTS sales_fact;
+-- DLL команды 
 
 -- ************************************** order_dim
 
@@ -75,40 +70,35 @@ CREATE TABLE sales_fact
  CONSTRAINT FK_5 FOREIGN KEY ( "Ship ID" ) REFERENCES ship_dim ( "Ship ID" ),
  CONSTRAINT FK_3 FOREIGN KEY ( "Geo ID" ) REFERENCES geo_dim ( "Geo ID" ));
  
+-- Наполнение таблиц
 
 INSERT INTO order_dim
 SELECT "Order ID", "Order Date" 
 FROM (SELECT DISTINCT "Order ID", "Order Date" FROM orders) a; 
 
---SELECT * FROM order_dim;
 
 
 INSERT INTO costumer_dim
 SELECT  "Customer ID", "Customer Name",  segment 
 FROM (SELECT DISTINCT "Customer ID", "Customer Name", segment FROM orders) a;
 
---SELECT * FROM costumer_dim;
 
 INSERT	INTO geo_dim
 SELECT ROW_NUMBER() OVER(),  City, "state", Country 
 FROM (SELECT DISTINCT City, "state", Country FROM orders) a;
 
---SELECT * FROM geo_dim;
 
 
 INSERT INTO product_dim
 SELECT  ROW_NUMBER () OVER (), category 
 FROM (SELECT DISTINCT  category FROM orders) a;
 
---SELECT * FROM product_dim;
 
 
 INSERT INTO ship_dim
 SELECT ROW_NUMBER () OVER (), "Ship Date", "Ship Mode" 
 FROM (SELECT DISTINCT "Ship Date", "Ship Mode" FROM orders) a;
 
-
--- SELECT * FROM ship_dim;
 
 
 INSERT INTO sales_fact 
