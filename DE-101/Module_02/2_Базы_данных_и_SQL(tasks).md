@@ -103,6 +103,12 @@ Cоздания запросов:
 
 ## 2.6: Как донести данные до бизнес-пользователя (Пример решений на KlipFolio, Google Sheets и пр.)
 
+## 2.6: Как донести данные до бизнес-пользователя (Пример решений на KlipFolio, Google Sheets и пр.)
+
 ### Практика:
 1. Вам необходимо создать дашборд в одном из решений. Для идей можно использовать задание из 1го модуля. Данные должны быть в Postgres в AWS и вы сможете подключиться сервисом к БД и создать несколько отчетов. Для практики можно и во всех 3х создать.
+
+### Выполнение:
+1. Дашбор выбран [LookerStudio](https://lookerstudio.google.com/). Создан connect между [Postgres в AWS и LookerStudio](https://github.com/ZoooMX/DataLearn/blob/main/DE-101/Module_02/2.6/HW_2.5_connect_AWS_BI.png).
+Создан [отчет](https://github.com/ZoooMX/DataLearn/blob/main/DE-101/Module_02/2.6/HW_2.5_BI_lookerstudio.png) на основе данных из Postgres в AWS.
 
